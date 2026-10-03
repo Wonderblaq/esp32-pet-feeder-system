@@ -1,0 +1,59 @@
+{
+  "version": 1,
+  "author": "Sarfo Nana",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-breadboard-half", "id": "bb1", "top": 141, "left": -256.4, "attrs": {} },
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 384, "left": -158.36, "attrs": {} },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": 217.2,
+      "left": -197.8,
+      "attrs": { "color": "red" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 263.15,
+      "left": -172.8,
+      "attrs": { "value": "1000" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn1",
+      "top": 230,
+      "left": -22,
+      "rotate": 270,
+      "attrs": { "color": "green", "xray": "1" }
+    },
+    { "type": "wokwi-servo", "id": "servo1", "top": 418.6, "left": 1, "rotate": 90, "attrs": {} },
+    { "type": "wokwi-hc-sr04", "id": "ultrasonic1", "top": 145.5, "left": 120.7, "attrs": {} }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "esp:5V", "bb1:bp.1", "red", [ "v0.15", "h-86.4", "v-57.6" ] ],
+    [ "esp:GND.1", "bb1:bn.1", "black", [ "h0" ] ],
+    [ "esp:13", "bb1:13b.j", "green", [ "h-28.65", "v-182.4", "h67.2" ] ],
+    [ "bb1:6b.j", "bb1:bn.5", "black", [ "v0" ] ],
+    [ "bb1:25b.j", "esp:4", "green", [ "v230.4", "h-9.6" ] ],
+    [ "bb1:27t.a", "bb1:bn.24", "black", [ "v0", "h57.6", "v144" ] ],
+    [ "esp:18", "servo1:PWM", "orange", [ "h28.8", "v-115.2" ] ],
+    [ "servo1:GND", "bb1:bn.22", "black", [ "v-28.8", "h-76.8" ] ],
+    [ "servo1:V+", "bb1:bp.21", "red", [ "v-19.2", "h-76.9" ] ],
+    [ "led1:A", "bb1:7b.f", "", [ "$bb" ] ],
+    [ "led1:C", "bb1:6b.f", "", [ "$bb" ] ],
+    [ "r1:1", "bb1:7b.g", "", [ "$bb" ] ],
+    [ "r1:2", "bb1:13b.g", "", [ "$bb" ] ],
+    [ "btn1:1.l", "bb1:25b.i", "", [ "$bb" ] ],
+    [ "btn1:2.l", "bb1:27b.i", "", [ "$bb" ] ],
+    [ "btn1:1.r", "bb1:25t.d", "", [ "$bb" ] ],
+    [ "btn1:2.r", "bb1:27t.d", "", [ "$bb" ] ],
+    [ "esp:17", "ultrasonic1:ECHO", "green", [ "h76.8", "v67.2", "h192" ] ],
+    [ "esp:5", "ultrasonic1:TRIG", "green", [ "h38.4", "v86.4", "h220.8" ] ],
+    [ "ultrasonic1:VCC", "bb1:bp.23", "red", [ "v0" ] ],
+    [ "bb1:bn.2", "ultrasonic1:GND", "black", [ "v286.7", "h481.6" ] ]
+  ],
+  "dependencies": {}
+}
